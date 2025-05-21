@@ -1,0 +1,59 @@
+<div *ngIf="isModalOpen" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+    <div class="relative bg-white p-8 rounded-lg shadow-xl w-full max-w-4xl">
+        
+      
+<!-- زر دائري في الأعلى على اليمين -->
+<button (click)="closeModal()"
+  type="button"
+  class="absolute -top-5 -right-5 w-12 h-12 flex items-center justify-center bg-red-600 hover:bg-red-700 text-white text-3xl rounded-full shadow-lg focus:outline-none z-50"
+  aria-label="إغلاق">
+  &times;
+</button>
+
+  
+      <h3 class="text-2xl font-bold text-right mb-6">📘 إضافة دورة جديدة</h3>
+  
+      <form (ngSubmit)="createCourse()">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="title" class="block text-right text-gray-700">عنوان الدورة</label>
+            <input [(ngModel)]="course.title" name="title" id="title" type="text" class="w-full p-2 border rounded" required />
+          </div>
+  
+          <div>
+            <label for="description" class="block text-right text-gray-700">الوصف</label>
+            <textarea [(ngModel)]="course.description" name="description" id="description" class="w-full p-2 border rounded h-[42px]" required></textarea>
+          </div>
+        </div>
+  
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="price" class="block text-right text-gray-700">السعر</label>
+            <input [(ngModel)]="course.price" name="price" id="price" type="number" class="w-full p-2 border rounded" required />
+          </div>
+  
+          <div>
+            <label for="category" class="block text-right text-gray-700">الفئة</label>
+            <input [(ngModel)]="course.category" name="category" id="category" type="text" class="w-full p-2 border rounded" />
+          </div>
+        </div>
+  
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="start_date" class="block text-right text-gray-700">تاريخ البداية</label>
+            <input [(ngModel)]="course.start_date" name="start_date" id="start_date" type="date" class="w-full p-2 border rounded" />
+          </div>
+  
+          <div>
+            <label for="end_date" class="block text-right text-gray-700">تاريخ النهاية</label>
+            <input [(ngModel)]="course.end_date" name="end_date" id="end_date" type="date" class="w-full p-2 border rounded" />
+          </div>
+        </div>
+  
+        <div class="flex justify-end">
+          <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg">إضافة الدورة</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

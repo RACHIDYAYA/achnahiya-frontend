@@ -1,0 +1,86 @@
+<div class="max-w-6xl mx-auto px-4 py-8">
+
+    <h2 class="text-3xl font-semibold text-center text-blue-600 mb-8">📚 محتوى الدورة</h2>
+  
+    <button (click)="openModal()" class="mb-6 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+      + إضافة محتوى جديد
+    </button>
+  
+    <div *ngIf="isLoading" class="flex flex-col items-center">
+      <svg class="animate-spin h-10 w-10 text-blue-600 mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+      </svg>
+      <p class="text-gray-700">جاري تحميل المحتوى...</p>
+    </div>
+  
+    <div *ngIf="errorMessage" class="bg-red-100 text-red-700 p-4 rounded text-center mb-6">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- هنا استخدمنا safe navigation operator `?.` -->
+    <div *ngIf="!isLoading && materials.length > 0" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div *ngFor="let material of materials" class="bg-white rounded-lg shadow-md p-6 flex flex-col">
+          <h3 class="text-xl font-medium mb-4 text-gray-800">{{ material.title }}</h3>
+      
+          <ng-container [ngSwitch]="material.type">
+            <video *ngSwitchCase="'video'" controls class="rounded-md w-full h-48 object-cover">
+              <source [src]="'http://localhost:8000' + material.file_path" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+      
+            <a *ngSwitchCase="'pdf'"
+              [href]="'http://localhost:8000' + material.file_path"
+              target="_blank"
+              class="inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+              📄 عرض PDF
+            </a>
+          </ng-container>
+        </div>
+      </div>
+  
+    <div *ngIf="!isLoading && materials?.length === 0" class="text-center text-gray-500 mt-8">
+      لا توجد ملفات متاحة حالياً في هذه الدورة.
+    </div>
+  
+  </div>
+  
+  <!-- مودال إضافة محتوى -->
+  <div *ngIf="isModalOpen" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+    <div class="relative bg-white p-8 rounded-lg shadow-xl w-full max-w-2xl">
+  
+      <button (click)="closeModal()"
+        type="button"
+        class="absolute -top-5 -right-5 w-12 h-12 flex items-center justify-center bg-red-600 hover:bg-red-700 text-white text-3xl rounded-full shadow-lg focus:outline-none z-50"
+        aria-label="إغلاق">
+        &times;
+      </button>
+  
+      <h3 class="text-2xl font-bold text-right mb-6">📘 إضافة محتوى جديد</h3>
+  
+      <form (ngSubmit)="addMaterial()">
+        <div class="mb-4 text-right">
+          <label class="block mb-1">عنوان المحتوى</label>
+          <input type="text" [(ngModel)]="newMaterial.title" name="title" required class="w-full border p-2 rounded" />
+        </div>
+  
+        <div class="mb-4 text-right">
+          <label class="block mb-1">نوع المحتوى</label>
+          <select [(ngModel)]="newMaterial.type" name="type" class="w-full border p-2 rounded">
+            <option value="video">فيديو</option>
+            <option value="pdf">PDF</option>
+          </select>
+        </div>
+  
+        <div class="mb-4 text-right">
+          <label class="block mb-1">رفع الملف أو الفيديو</label>
+          <input type="file" (change)="onFileSelected($event)" name="file" required class="w-full border p-2 rounded" />
+        </div>
+  
+        <div class="flex justify-end">
+          <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg">إضافة</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,19 @@
+<div class="max-w-md mx-auto mt-20 p-6 bg-white rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">تسجيل حساب جديد</h2>
+    <form (ngSubmit)="onRegister()">
+      <input [(ngModel)]="name" name="name" type="text" placeholder="الاسم الكامل" class="mb-4 w-full p-2 border rounded" required>
+      <input [(ngModel)]="email" name="email" type="email" placeholder="البريد الإلكتروني" class="mb-4 w-full p-2 border rounded" required>
+      <input [(ngModel)]="password" name="password" type="password" placeholder="كلمة المرور" class="mb-4 w-full p-2 border rounded" required>
+      <input [(ngModel)]="password_confirmation" name="password_confirmation" type="password" placeholder="تأكيد كلمة المرور" class="mb-4 w-full p-2 border rounded" required>
+  
+      <!-- ✅ اختيار الدور -->
+      <select [(ngModel)]="role" name="role" class="mb-4 w-full p-2 border rounded" required>
+        <option value="" disabled selected>اختر الدور</option>
+        <option value="student">طالب</option>
+        <option value="instructor">مدرب</option>
+      </select>
+  
+      <button type="submit" class="w-full bg-green-600 text-white p-2 rounded">تسجيل</button>
+    </form>
+  </div>
+  
