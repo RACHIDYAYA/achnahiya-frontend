@@ -28,15 +28,23 @@ ACHNAHIYA is a full-featured LMS platform that allows instructors to create cour
 
 ```
 
-achnahiya-frontend/
+        achnahiya-frontend/
 ├── src/
+
 │   ├── app/              # Main application modules & components
+
 │   ├── assets/           # Images, icons, styles
+
 │   ├── environments/     # Environment configs
+
 │   └── index.html        # Root HTML
+
 ├── angular.json          # Angular CLI config
+
 ├── tailwind.config.js    # Tailwind configuration
+
 ├── package.json          # Project metadata and scripts
+
 └── tsconfig.json         # TypeScript config
 
 ````
