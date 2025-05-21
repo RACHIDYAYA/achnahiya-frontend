@@ -1,47 +1,115 @@
-# ACHNAHIYA Frontend 🎓
-
-واجهة المستخدم الخاصة بمنصة التعليم الإلكتروني [ACHNAHIYA](https://github.com/RACHIDYAYA/achnahiya) مبنية باستخدام **Angular**.  
-توفر هذه الواجهة تجربة مستخدم سلسة وعصرية للمتعلمين والمدرسين.
+تمام! إليك محتوى ملف `README.md` كامل ومجهز بلغة إنجليزية أنيقة، خاص فقط بـ **الواجهة الأمامية (Frontend)** لمشروع **ACHNAHIYA**، يمكنك نسخه مباشرة ووضعه داخل ملف واحد:
 
 ---
 
-## 📂 المحتويات
+```markdown
+# ACHNAHIYA Frontend
 
-- [مقدمة](#مقدمة)
-- [التقنيات المستخدمة](#التقنيات-المستخدمة)
-- [تشغيل المشروع](#تشغيل-المشروع)
-- [الإعدادات](#الإعدادات)
-- [أوامر مهمة](#أوامر-مهمة)
-- [هيكل المشروع](#هيكل-المشروع)
-- [المساهمة](#المساهمة)
-- [الرخصة](#الرخصة)
+A modern and responsive Angular frontend for the ACHNAHIYA Learning Management System (LMS) platform.
 
 ---
 
-## 🧠 مقدمة
+## 📚 Overview
 
-واجهة ACHNAHIYA تم تطويرها باستخدام Angular وتعمل كعميل (Client) يتصل بـ API مبني بـ Laravel.  
-تسمح للمستخدمين بـ:
-- تصفح الدورات التعليمية
-- التسجيل والولوج
-- التفاعل مع المحتوى
+ACHNAHIYA is a full-featured LMS platform that allows instructors to create courses, upload educational materials, and manage student enrollments. This repository contains the **frontend** codebase built with **Angular 15+** and **Tailwind CSS**, providing a smooth and interactive user experience.
 
 ---
 
-## ⚙️ التقنيات المستخدمة
+## 🛠️ Technologies Used
 
-- **Angular 15+**
-- **TypeScript**
-- **RxJS**
-- **TailwindCSS** (للتصميم)
-- **Angular Router**
-- **HttpClient** (للتواصل مع الـ API)
+- [Angular](https://angular.io/) 15+
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [RxJS](https://rxjs.dev/)
+- [Angular Router](https://angular.io/guide/router)
+- [HTTPClient Module](https://angular.io/guide/http)
+- API connection via [Laravel Sanctum](https://laravel.com/docs/sanctum)
 
 ---
 
-## 🚀 تشغيل المشروع
+## 📁 Project Structure
 
-1. **نسخ المشروع:**
-   ```bash
-   git clone https://github.com/RACHIDYAYA/achnahiya-frontend.git
-   cd achnahiya-frontend
+```
+
+achnahiya-frontend/
+├── src/
+│   ├── app/              # Main application modules & components
+│   ├── assets/           # Images, icons, styles
+│   ├── environments/     # Environment configs
+│   └── index.html        # Root HTML
+├── angular.json          # Angular CLI config
+├── tailwind.config.js    # Tailwind configuration
+├── package.json          # Project metadata and scripts
+└── tsconfig.json         # TypeScript config
+
+````
+
+---
+
+## 🚀 Getting Started
+
+### 1. Install dependencies
+
+```bash
+npm install
+````
+
+### 2. Run development server
+
+```bash
+ng serve
+```
+
+Open your browser at: [http://localhost:4200](http://localhost:4200)
+
+---
+
+## 🌐 Connect to Backend API
+
+Make sure the backend Laravel API is running (e.g., at `http://127.0.0.1:8000`).
+
+Update the environment file:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  production: false,
+  apiUrl: 'http://127.0.0.1:8000/api'
+};
+```
+
+---
+
+## 📦 Production Build
+
+To build the app for production:
+
+```bash
+ng build
+```
+
+The output will be in the `dist/` folder.
+
+---
+
+## 🧪 Testing
+
+If tests are configured:
+
+```bash
+ng test
+```
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+## 👨‍💻 Author
+
+Developed with ❤️ by **Rachid Yaya**
+
+```
